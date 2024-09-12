@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { TextField, Button } from "@mui/material";
+import PropTypes from "prop-types";
 
 const FormComponent = ({ onSubmit }) => {
   const [formData, setFormData] = useState({ name: "", age: "" });
@@ -36,6 +37,10 @@ const FormComponent = ({ onSubmit }) => {
       </Button>
     </form>
   );
+};
+
+FormComponent.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default FormComponent;

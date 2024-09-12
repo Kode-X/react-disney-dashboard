@@ -1309,7 +1309,7 @@
 
 "@emotion/react@^11.13.3":
   version "11.13.3"
-  resolved "https://registry.npmjs.org/@emotion/react/-/react-11.13.3.tgz"
+  resolved "https://registry.yarnpkg.com/@emotion/react/-/react-11.13.3.tgz#a69d0de2a23f5b48e0acf210416638010e4bd2e4"
   integrity sha512-lIsdU6JNrmYfJ5EbUCf4xW1ovy5wKQ2CkPRM4xogziOxH1nXxBSjpC9YqbFAP7circxMfYp+6x676BqWcEiixg==
   dependencies:
     "@babel/runtime" "^7.18.3"
@@ -1339,7 +1339,7 @@
 
 "@emotion/styled@^11.13.0":
   version "11.13.0"
-  resolved "https://registry.npmjs.org/@emotion/styled/-/styled-11.13.0.tgz"
+  resolved "https://registry.yarnpkg.com/@emotion/styled/-/styled-11.13.0.tgz#633fd700db701472c7a5dbef54d6f9834e9fb190"
   integrity sha512-tkzkY7nQhW/zC4hztlwucpT8QEZ6eUzpXDRhww/Eej4tFfO0FxQYWRyg/c5CCXa4d/f174kqeXYjuQRnhzf6dA==
   dependencies:
     "@babel/runtime" "^7.18.3"
@@ -1736,7 +1736,7 @@
 
 "@mui/material@^6.1.0":
   version "6.1.0"
-  resolved "https://registry.npmjs.org/@mui/material/-/material-6.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/@mui/material/-/material-6.1.0.tgz#42c900df9667f58d10082eafdae0cb99ea43339b"
   integrity sha512-4MJ46vmy1xbm8x+ZdRcWm8jEMMowdS8pYlhKQzg/qoKhOcLhImZvf2Jn6z9Dj6gl+lY+C/0MxaHF/avAAGys3Q==
   dependencies:
     "@babel/runtime" "^7.25.6"
@@ -5343,6 +5343,11 @@ he@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/he/-/he-1.2.0.tgz"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
+
+highcharts-accessibility@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/highcharts-accessibility/-/highcharts-accessibility-0.1.7.tgz#6d212546b1113760a28cffacfd8e7a3f7c1040a7"
+  integrity sha512-2hfAuQN8NtGCiq4+F4fG45LT6cwr9YJWAviMZdIlFUEMqn15MRzhuLtJthQU0UM5rfkjBe01/z6zfb7p1b9N4w==
 
 highcharts-react-official@^3.2.1:
   version "3.2.1"

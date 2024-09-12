@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Modal, Box, Button } from "@mui/material";
+import PropTypes from "prop-types";
 
 const ModalComponent = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -17,6 +18,10 @@ const ModalComponent = ({ children }) => {
       </Modal>
     </div>
   );
+};
+
+ModalComponent.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default ModalComponent;

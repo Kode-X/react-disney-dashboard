@@ -2,7 +2,9 @@ import { create } from "zustand";
 
 const useStore = create((set) => ({
   disneyData: [],
-  setDisneyData: (data) => set({ disneyData: data }),
+  loading: true,
+  setDisneyData: (data) => set({ disneyData: data, loading: false }),
+  setLoading: (loading) => set({ loading }),
 }));
 
 export default useStore;

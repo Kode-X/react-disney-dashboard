@@ -17,27 +17,23 @@ function App() {
 
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
-    { field: "name", headerName: "Name", width: 150 },
-    { field: "films", headerName: "Films", width: 150 },
+    { field: "name", headerName: "Character Name", width: 150 },
+    { field: "tvShows", headerName: "TV Shows", width: 150 },
+    { field: "videoGames", headerName: "Video Games", width: 150 },
+    { field: "allies", headerName: "Allies", width: 200 },
+    { field: "enemies", headerName: "Enemies", width: 200 },
   ];
 
   const pieData = disneyData.map((item) => ({
     name: item.name,
-    y: item.films.length,
+    y: item.tvShows + item.videoGames,
   }));
 
   return (
     <Container>
       <Grid2 container spacing={3}>
         <Grid2 item xs={12}>
-          <DataTable
-            rows={disneyData.map((item, index) => ({
-              ...item,
-              id: item._id || index,
-            }))}
-            columns={columns}
-            getRowId={(row) => row.id}
-          />
+          <DataTable rows={disneyData} columns={columns} />
         </Grid2>
         <Grid2 item xs={6}>
           <PieChart data={pieData} />

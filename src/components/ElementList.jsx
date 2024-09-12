@@ -1,8 +1,13 @@
-import React from "react";
-import { List, ListItem, ListItemText } from "@mui/material";
+import PropTypes from "prop-types";
+import { List, ListItem, ListItemText, Skeleton } from "@mui/material";
+import useStore from "../store";
 
 const ElementList = ({ items }) => {
-  return (
+  const loading = useStore((state) => state.loading);
+
+  return loading ? (
+    <Skeleton variant="rectangular" width="100%" height={400} />
+  ) : (
     <List>
       {items.map((item, index) => (
         <ListItem key={index}>
@@ -11,6 +16,14 @@ const ElementList = ({ items }) => {
       ))}
     </List>
   );
+};
+
+ElementList.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default ElementList;
