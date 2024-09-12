@@ -9,16 +9,64 @@ HighchartsAccessibility(Highcharts);
 
 const PieChart = ({ data }) => {
   const loading = useStore((state) => state.loading);
+
+  const splitArrayIntoStrings = (arr) => {
+    const result = [];
+    let currentString = "";
+
+    arr.forEach((char) => {
+      if (char === ",") {
+        result.push(currentString.trim());
+        currentString = "";
+      } else {
+        currentString += char;
+      }
+    });
+
+    // Add the last string if there's no trailing comma
+    if (currentString) {
+      result.push(currentString.trim());
+    }
+
+    return result;
+  };
+
   const options = {
     chart: {
       type: "pie",
     },
     title: {
-      text: "Pie Chart",
+      text: "Character Films",
     },
+    tooltip: {
+      pointFormatter: function () {
+        console.log(this);
+        const filmsArray = Array.isArray(this.films)
+          ? this.films
+          : [this.films];
+        console.log(filmsArray);
+        const filmsString = splitArrayIntoStrings(filmsArray); //filmsArray.join("");
+        console.log(filmsString);
+        const percentageString = `<b>${this.percentage.toFixed(2)}%</b><br/>`;
+        const filmsList =
+          filmsString.length > 1
+            ? `Films: ${filmsString
+                .map((film) => `<br/>&nbsp;&nbsp;&nbsp;&nbsp;- ${film}`)
+                .join("")}`
+            : `Film: ${filmsString[0]}`;
+
+        return `${percentageString}${filmsList}`;
+      },
+    },
+
     series: [
       {
-        data: data,
+        name: "Films",
+        data: data.map((item) => ({
+          name: item.name,
+          y: item.y,
+          films: item.films,
+        })),
       },
     ],
   };
