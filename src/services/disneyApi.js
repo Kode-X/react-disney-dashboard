@@ -11,10 +11,11 @@ export const fetchDisneyData = async () => {
     const processedData = response.data.data.map((character, index) => ({
       id: character._id || index,
       name: character.name,
-      tvShows: character.tvShows.join(", "),
-      videoGames: character.videoGames.join(", "),
-      allies: character.allies.join(", "),
-      enemies: character.enemies.join(", "),
+      tvShows: character.tvShows,
+      videoGames: character.videoGames,
+      allies: character.allies,
+      enemies: character.enemies,
+      image: character.imageUrl,
     }));
     setDisneyData(processedData);
   } catch (error) {

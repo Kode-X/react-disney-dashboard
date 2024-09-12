@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Button, Container, Grid, Grid2, TextField } from "@mui/material";
+import { Button, Container, Grid, TextField } from "@mui/material";
+import { useEffect, useState } from "react";
+import * as XLSX from "xlsx";
 import DataTable from "./components/DataTable";
 import PieChart from "./components/PieChart";
-import ElementList from "./components/ElementList";
-import ModalComponent from "./components/ModalComponent";
-import FormComponent from "./components/FormComponent";
 import { fetchDisneyData } from "./services/disneyApi";
 import useStore from "./store";
-import * as XLSX from "xlsx";
-import { columns } from "./utils/utils";
+import { columns } from "./utils/dataTableConfig";
 
 function App() {
   const disneyData = useStore((state) => state.disneyData);
@@ -19,6 +16,10 @@ function App() {
   useEffect(() => {
     fetchDisneyData();
   }, []);
+
+  if (!disneyData) {
+    return <div>No data available</div>;
+  }
 
   const filteredData = disneyData.filter((character) =>
     character.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -73,14 +74,6 @@ function App() {
         <Grid item xs={6} md={6}>
           <PieChart data={pieData} />
         </Grid>
-        {/* <Grid2 item xs={6}>
-          <ElementList items={filteredData} />
-        </Grid2> */}
-        {/* <Grid2 item xs={12}>
-          <ModalComponent>
-            <FormComponent onSubmit={(formData) => console.log(formData)} />
-          </ModalComponent>
-        </Grid2> */}
       </Grid>
     </Container>
   );
