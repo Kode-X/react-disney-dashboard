@@ -6,14 +6,7 @@ import useStore from "../store";
 import CharacterDetailsModalContent from "./CharacterDetailsModalContent";
 import GenericModal from "./GenericModal";
 
-const DataTable = ({
-  rows,
-  columns,
-  page,
-  pageSize,
-  paginationModel,
-  setPaginationModel,
-}) => {
+const DataTable = ({ rows, columns, paginationModel, setPaginationModel }) => {
   const loading = useStore((state) => state.loading);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,7 +21,6 @@ const DataTable = ({
     setSelectedCharacter(null);
   };
 
-  console.log(selectedCharacter);
   return loading ? (
     <Skeleton variant="rectangular" width="100%" height={400} />
   ) : (
@@ -37,8 +29,6 @@ const DataTable = ({
         <DataGrid
           rows={rows}
           columns={columns}
-          pageSize={pageSize}
-          page={page}
           initialState={{ pagination: { paginationModel } }}
           onPaginationModelChange={setPaginationModel}
           autoHeight
@@ -63,11 +53,11 @@ DataTable.propTypes = {
     PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       name: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-      numberOfTvShows: PropTypes.number.isRequired,
-      numberOfVideoGames: PropTypes.number.isRequired,
-      allies: PropTypes.string.isRequired,
-      enemies: PropTypes.string.isRequired,
+      image: PropTypes.string,
+      numberOfTvShows: PropTypes.number,
+      numberOfVideoGames: PropTypes.number,
+      allies: PropTypes.arrayOf(PropTypes.string),
+      enemies: PropTypes.arrayOf(PropTypes.string),
     })
   ).isRequired,
   columns: PropTypes.arrayOf(
@@ -77,10 +67,11 @@ DataTable.propTypes = {
       width: PropTypes.number,
     })
   ).isRequired,
-  page: PropTypes.number.isRequired,
-  pageSize: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired,
-  onPageSizeChange: PropTypes.func.isRequired,
+  paginationModel: PropTypes.shape({
+    page: PropTypes.number.isRequired,
+    pageSize: PropTypes.number.isRequired,
+  }).isRequired,
+  setPaginationModel: PropTypes.func.isRequired,
 };
 
 export default DataTable;

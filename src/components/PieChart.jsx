@@ -61,12 +61,16 @@ const PieChart = ({ filteredData, paginationModel }) => {
 };
 
 PieChart.propTypes = {
-  data: PropTypes.arrayOf(
+  filteredData: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      y: PropTypes.number.isRequired,
+      films: PropTypes.arrayOf(PropTypes.string).isRequired,
     })
   ).isRequired,
+  paginationModel: PropTypes.shape({
+    page: PropTypes.number.isRequired,
+    pageSize: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default PieChart;

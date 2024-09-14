@@ -52,7 +52,7 @@ const GenericModal = ({ open, onClose, children }) => {
 GenericModal.propTypes = {
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export default GenericModal;
