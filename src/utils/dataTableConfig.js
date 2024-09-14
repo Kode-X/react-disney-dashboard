@@ -1,8 +1,13 @@
 export const columns = [
   { field: "name", headerName: "Character", width: 150, sortable: true },
-  { field: "tvShows", headerName: "TV Shows", width: 150, sortable: false },
   {
-    field: "videoGames",
+    field: "numberOfTvShows",
+    headerName: "TV Shows",
+    width: 150,
+    sortable: false,
+  },
+  {
+    field: "numberOfVideoGames",
     headerName: "Video Games",
     width: 150,
     sortable: false,

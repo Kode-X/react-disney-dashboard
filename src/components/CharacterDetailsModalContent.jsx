@@ -13,7 +13,7 @@ const CharacterDetailsModalContent = ({ selectedCharacter }) => {
         src={selectedCharacter.image}
         alt={selectedCharacter.name}
         sx={{
-          width: "80%",
+          width: "60%",
           height: "auto",
           display: "block",
           margin: "0 auto",

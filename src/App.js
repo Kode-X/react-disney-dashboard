@@ -1,6 +1,6 @@
 import { Button, Container, Grid, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
-import * as XLSX from "xlsx";
+
 import DataTable from "./components/DataTable";
 import PieChart from "./components/PieChart";
 import { fetchDisneyData } from "./services/disneyApi";
@@ -40,13 +40,6 @@ function App() {
     setSearchQuery(event.target.value);
   };
 
-  const handleExport = () => {
-    const worksheet = XLSX.utils.json_to_sheet(pieData);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "PieChart Data");
-    XLSX.writeFile(workbook, "PieChartData.xlsx");
-  };
-
   return (
     <Container>
       <TextField
@@ -57,9 +50,7 @@ function App() {
         value={searchQuery}
         onChange={handleSearchChange}
       />
-      <Button variant="contained" color="primary" onClick={handleExport}>
-        Export Chart Data
-      </Button>
+
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <DataTable

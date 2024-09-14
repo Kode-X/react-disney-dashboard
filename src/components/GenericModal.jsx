@@ -12,7 +12,28 @@ const GenericModal = ({ open, onClose, children }) => {
           backgroundColor: "white",
           margin: "auto",
           maxWidth: 600,
+          maxHeight: "90vh",
+          overflowY: "auto",
           position: "relative",
+          "&::-webkit-scrollbar": {
+            width: "8px",
+          },
+          "&::-webkit-scrollbar-track": {
+            background: "#f1f1f1",
+            borderRadius: "10px",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            background: "#888",
+            borderRadius: "10px",
+          },
+          "&::-webkit-scrollbar-thumb:hover": {
+            background: "#555",
+          },
+          "&::-webkit-scrollbar-corner": {
+            background: "transparent",
+          },
+          scrollbarWidth: "thin", // For Firefox
+          scrollbarColor: "#888 #f1f1f1", // For Firefox
         }}
       >
         <IconButton
