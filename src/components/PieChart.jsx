@@ -15,11 +15,22 @@ import pieChartOptions from "../utils/pieChartConfig";
 
 HighchartsAccessibility(Highcharts);
 
-const PieChart = ({ data }) => {
+const PieChart = ({ filteredData, paginationModel }) => {
   const loading = useStore((state) => state.loading);
 
+  const paginatedData = filteredData.slice(
+    paginationModel.page * paginationModel.pageSize,
+    paginationModel.page * paginationModel.pageSize + paginationModel.pageSize
+  );
+
+  const pieData = paginatedData.map((item) => ({
+    name: item.name,
+    y: item.films.length,
+    films: [...item.films],
+  }));
+
   const handleExport = () => {
-    const worksheet = XLSX.utils.json_to_sheet(data);
+    const worksheet = XLSX.utils.json_to_sheet(pieData);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "PieChart Data");
     XLSX.writeFile(workbook, "PieChartData.xlsx");
@@ -32,7 +43,7 @@ const PieChart = ({ data }) => {
       <CardContent>
         <HighchartsReact
           highcharts={Highcharts}
-          options={pieChartOptions(data)}
+          options={pieChartOptions(pieData)}
         />
       </CardContent>
       <CardActions sx={{ justifyContent: "flex-end" }}>

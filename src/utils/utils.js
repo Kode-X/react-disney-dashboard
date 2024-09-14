@@ -6,7 +6,9 @@ export function formatFilmsAndPercentage(films, percentage) {
       ? `Films: ${filmsArray
           .map((film) => `<br/>&nbsp;&nbsp;&nbsp;&nbsp;- ${film}`)
           .join("")}`
-      : `Film: ${filmsArray[0]}`;
+      : filmsArray.length === 1
+      ? `Film: ${filmsArray[0]}`
+      : "Films: None";
 
   return `${percentageString}${filmsList}`;
 }
