@@ -12,7 +12,6 @@ import PropTypes from "prop-types";
 import * as XLSX from "xlsx";
 import useStore from "../store";
 import pieChartOptions from "../utils/pieChartConfig";
-import { useEffect, useState } from "react";
 
 HighchartsAccessibility(Highcharts);
 

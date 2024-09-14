@@ -6,15 +6,13 @@ import useStore from "../store";
 import CharacterDetailsModalContent from "./CharacterDetailsModalContent";
 import GenericModal from "./GenericModal";
 
-const paginationModel = { page: 0, pageSize: 50 };
-
 const DataTable = ({
   rows,
   columns,
   page,
   pageSize,
-  onPageChange,
-  onPageSizeChange,
+  paginationModel,
+  setPaginationModel,
 }) => {
   const loading = useStore((state) => state.loading);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -41,14 +39,11 @@ const DataTable = ({
           columns={columns}
           pageSize={pageSize}
           page={page}
-          onPageChange={(params) => onPageChange(params.page)}
-          onPageSizeChange={(params) => onPageSizeChange(params.pageSize)}
-          pagination
           initialState={{ pagination: { paginationModel } }}
+          onPaginationModelChange={setPaginationModel}
           autoHeight
           pageSizeOptions={[10, 20, 50, 100, 200, 500]}
           onRowClick={handleRowClick}
-          hfgy
           sx={{ border: 0 }}
         />
         <GenericModal open={isModalOpen} onClose={handleCloseModal}>

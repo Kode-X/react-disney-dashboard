@@ -10,8 +10,10 @@ import { columns } from "./utils/dataTableConfig";
 function App() {
   const disneyData = useStore((state) => state.disneyData);
   const [searchQuery, setSearchQuery] = useState("");
-  const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(10);
+  const [paginationModel, setPaginationModel] = useState({
+    pageSize: 50,
+    page: 0,
+  });
 
   useEffect(() => {
     fetchDisneyData();
@@ -26,14 +28,14 @@ function App() {
   );
 
   const paginatedData = filteredData.slice(
-    page * pageSize,
-    page * pageSize + pageSize
+    paginationModel.page * paginationModel.pageSize,
+    paginationModel.page * paginationModel.pageSize + paginationModel.pageSize
   );
 
   const pieData = paginatedData.map((item) => ({
     name: item.name,
     y: item.tvShows.length + item.videoGames.length,
-    films: [...item.tvShows, ...item.videoGames],
+    films: [...item.films],
   }));
 
   const handleSearchChange = (event) => {
@@ -56,10 +58,8 @@ function App() {
           <DataTable
             rows={filteredData}
             columns={columns}
-            page={page}
-            pageSize={pageSize}
-            onPageChange={(newPage) => setPage(newPage)}
-            onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+            paginationModel={paginationModel}
+            setPaginationModel={setPaginationModel}
           />
         </Grid>
         <Grid item xs={6} md={6}>

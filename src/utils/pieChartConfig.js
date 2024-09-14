@@ -17,7 +17,7 @@ const pieChartOptions = (data) => ({
       name: "Films",
       data: data.map((item) => ({
         name: item.name,
-        y: item.y,
+        y: item.films.length,
         films: item.films,
       })),
     },
