@@ -1,12 +1,14 @@
-import { Button, Container, Grid, TextField } from "@mui/material";
+import { Box, Container, Grid, ThemeProvider } from "@mui/material";
 import { useEffect, useState } from "react";
 
 import DataTable from "./components/DataTable";
 import PieChart from "./components/PieChart";
+import SearchCharacter from "./components/SearchCharacter";
+import Title from "./components/Title";
 import { fetchDisneyData } from "./services/disneyApi";
 import useStore from "./store";
+import theme from "./theme";
 import { columns } from "./utils/dataTableConfig";
-import SearchCharacter from "./components/SearchCharacter";
 
 function App() {
   const disneyData = useStore((state) => state.disneyData);
@@ -29,29 +31,41 @@ function App() {
   );
 
   return (
-    <Container>
-      <SearchCharacter
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
-
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
-          <DataTable
-            rows={filteredData}
-            columns={columns}
-            paginationModel={paginationModel}
-            setPaginationModel={setPaginationModel}
-          />
-        </Grid>
-        <Grid item xs={6} md={6}>
-          <PieChart
-            filteredData={filteredData}
-            paginationModel={paginationModel}
-          />
-        </Grid>
-      </Grid>
-    </Container>
+    <ThemeProvider theme={theme}>
+      <Box
+        sx={{
+          background: "linear-gradient(135deg, #f6d365 0%, #fda085 100%)",
+          minHeight: "100vh",
+          padding: "0px 20px",
+        }}
+      >
+        <Title text="Disney Characters" />
+        <Container sx={{ minWidth: "1600px" }}>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <SearchCharacter
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <DataTable
+                rows={filteredData}
+                columns={columns}
+                paginationModel={paginationModel}
+                setPaginationModel={setPaginationModel}
+              />
+            </Grid>
+            <Grid item xs={6} md={6}>
+              <PieChart
+                filteredData={filteredData}
+                paginationModel={paginationModel}
+              />
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+    </ThemeProvider>
   );
 }
 

@@ -1,5 +1,4 @@
 import { List, ListItem, ListItemText } from "@mui/material";
-import React from "react";
 import PropTypes from "prop-types";
 
 const ElementList = ({ items }) => {

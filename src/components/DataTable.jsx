@@ -24,7 +24,7 @@ const DataTable = ({ rows, columns, paginationModel, setPaginationModel }) => {
   return loading ? (
     <Skeleton variant="rectangular" width="100%" height={400} />
   ) : (
-    <Card sx={{ maxWidth: 800, margin: "auto", mt: 4 }}>
+    <Card sx={{ margin: "auto", mt: 4 }}>
       <CardContent>
         <DataGrid
           rows={rows}

@@ -1,7 +1,6 @@
 import { Box, IconButton, Modal } from "@mui/material";
 import { GridCloseIcon } from "@mui/x-data-grid";
 import PropTypes from "prop-types";
-import React from "react";
 
 const GenericModal = ({ open, onClose, children }) => {
   return (
