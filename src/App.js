@@ -29,7 +29,7 @@ function App() {
   const filteredData = disneyData.filter((character) =>
     character.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
+  console.log(filteredData);
   return (
     <ThemeProvider theme={theme}>
       <Box

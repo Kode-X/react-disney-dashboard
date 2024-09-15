@@ -15,9 +15,9 @@ export const fetchDisneyData = async () => {
       tvShows: character.tvShows,
       videoGames: character.videoGames,
       numberOfTvShows:
-        character.tvShows.length > 0 ? character.tvShows.length : [],
+        character.tvShows.length > 0 ? character.tvShows.length : null,
       numberOfVideoGames:
-        character.videoGames.length > 0 ? character.videoGames.length : [],
+        character.videoGames.length > 0 ? character.videoGames.length : null,
       allies: character.allies,
       enemies: character.enemies,
       image: character.imageUrl,
@@ -26,5 +26,7 @@ export const fetchDisneyData = async () => {
   } catch (error) {
     console.error("Error fetching Disney data:", error);
     setDisneyData([]);
+  } finally {
+    setLoading(false);
   }
 };
