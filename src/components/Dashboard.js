@@ -6,6 +6,7 @@ import DataTable from "./DataTable";
 import PieChart from "./PieChart";
 import { columns } from "../utils/dataTableConfig";
 import PropTypes from "prop-types";
+import FormCharacter from "./FormCharacter";
 
 const Dashboard = ({ filteredData, searchQuery, setSearchQuery }) => {
   const [paginationModel, setPaginationModel] = useState({
@@ -33,12 +34,15 @@ const Dashboard = ({ filteredData, searchQuery, setSearchQuery }) => {
           },
         }}
       >
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
+        <Grid container spacing={3} justifyContent={"center"}>
+          <Grid item xs={12} lg={7}>
             <SearchCharacter
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
             />
+          </Grid>
+          <Grid item xs={12} lg={7}>
+            <FormCharacter data={filteredData} />
           </Grid>
           <Grid item xs={12} md={6}>
             <DataTable

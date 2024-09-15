@@ -14,7 +14,7 @@ const theme = createTheme({
     },
     text: {
       primary: "#333", // Dark text
-      secondary: "#555", // Secondary text
+      secondary: "#555",
     },
   },
   typography: {
@@ -60,19 +60,40 @@ const theme = createTheme({
         root: {
           borderRadius: "20px",
           textTransform: "none",
+        },
+        containedPrimary: {
           background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
           color: "white",
           boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+          "&:hover": {
+            background: "linear-gradient(45deg, #FF8E53 30%, #FE6B8B 90%)",
+          },
+        },
+        containedSecondary: {
+          background: "linear-gradient(45deg, #FFA726 30%, #FB8C00 90%)",
+          color: "white",
+          boxShadow: "0 3px 5px 2px rgba(255, 152, 0, .3)",
+          "&:hover": {
+            background: "linear-gradient(45deg, #FB8C00 30%, #FFA726 90%)",
+          },
         },
       },
     },
-    MuiCard: {
+    MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          background: "rgba(255, 255, 255, 0.8)", // Slightly transparent white
-          backdropFilter: "blur(10px)", // Blur effect for a magical feel
-          borderRadius: "15px",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#ff4081", // Change this to your desired color
+          },
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          "&.Mui-focused": {
+            color: "#ff4081", // Change this to your desired color
+          },
         },
       },
     },
