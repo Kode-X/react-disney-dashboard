@@ -15,13 +15,24 @@ const Dashboard = ({ filteredData, searchQuery, setSearchQuery }) => {
   return (
     <Box
       sx={{
-        background: "linear-gradient(135deg, #f6d365 0%, #fda085 100%)",
+        background:
+          "linear-gradient(135deg, #fffacd 0%, #f6c27a 50%, #f7a64b 100%)",
         minHeight: "100vh",
         padding: "0px 20px",
       }}
     >
       <Title text="Disney Characters" />
-      <Container sx={{ minWidth: "1600px" }}>
+      <Container
+        sx={{
+          minWidth: {
+            xs: "100%",
+            sm: "600px",
+            md: "960px",
+            lg: "1280px",
+            xl: "1600px",
+          },
+        }}
+      >
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <SearchCharacter
@@ -37,7 +48,7 @@ const Dashboard = ({ filteredData, searchQuery, setSearchQuery }) => {
               setPaginationModel={setPaginationModel}
             />
           </Grid>
-          <Grid item xs={6} md={6}>
+          <Grid item xs={12} md={6}>
             <PieChart
               filteredData={filteredData}
               paginationModel={paginationModel}

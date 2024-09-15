@@ -1,12 +1,16 @@
-import { TextField } from "@mui/material";
+import { Skeleton, TextField } from "@mui/material";
 import PropTypes from "prop-types";
+import useStore from "../store";
 
 const SearchCharacter = ({ searchQuery, setSearchQuery }) => {
+  const loading = useStore((state) => state.loading);
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
-  return (
+  return loading ? (
+    <Skeleton variant="rectangular" width="100%" height={50} />
+  ) : (
     <TextField
       label="Search Characters"
       variant="outlined"

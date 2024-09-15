@@ -31,8 +31,8 @@ const GenericModal = ({ open, onClose, children }) => {
           "&::-webkit-scrollbar-corner": {
             background: "transparent",
           },
-          scrollbarWidth: "thin", // For Firefox
-          scrollbarColor: "#888 #f1f1f1", // For Firefox
+          scrollbarWidth: "thin",
+          scrollbarColor: "#888 #f1f1f1",
         }}
       >
         <IconButton
