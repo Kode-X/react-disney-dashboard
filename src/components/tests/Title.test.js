@@ -1,4 +1,3 @@
-// Title.test.js
 import { render } from "@testing-library/react";
 import Title from "../Title";
 
